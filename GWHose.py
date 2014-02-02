@@ -7,7 +7,8 @@ from time import sleep
 from sys import stdout
 
 SUBS_TEXT = '''
-mod
+gonewild
+asstastic
 '''
 
 SUBS = [x.strip() for x in SUBS_TEXT.strip().split('\n')]
