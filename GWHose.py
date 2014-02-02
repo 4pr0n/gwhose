@@ -16,19 +16,6 @@ while '' in SUBS: SUBS.remove('')
 
 db = DB()
 
-userpass = db.get_config('userpass')
-if userpass == None:
-	print '''
-	userpass not found in DB (posts.db).
-	try this:
-		sqlite3 posts.db "insert into config values (\'userpass\', \'username:password\')"'
-	replace username:password with the reddit username and password
-	'''
-	exit(1)
-
-(username, password) = userpass.split(':')
-Reddit.login(username, password)
-
 last_post = db.get_config('last_post')
 
 reddit_url = 'http://www.reddit.com/r/%s/new.json' % '+'.join(SUBS)
