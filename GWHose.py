@@ -25,7 +25,7 @@ while True:
 	try:
 		posts = Reddit.get(reddit_url)
 	except Exception, e:
-		print 'error when querying %s: %s' % (reddit_url, str(e))
+		#print 'error when querying %s: %s' % (reddit_url, str(e))
 		continue
 	for post in posts:
 		if last_post != None and post.id == last_post:
