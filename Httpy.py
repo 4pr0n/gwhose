@@ -55,7 +55,7 @@ class Httpy:
 		try:
 			headers = {'User-agent' : self.user_agent}
 			req = urllib2.Request(url, headers=headers)
-			site = self.urlopen(req)
+			site = self.urlopen(req, timeout=10)
 		except urllib2.HTTPError:
 			return url
 		except Exception:
@@ -65,7 +65,7 @@ class Httpy:
 	def check(self, url):
 		""" Check if a URL is valid """
 		try:
-			self.urlopen(url)
+			self.urlopen(url, timeout=10)
 		except:
 			return False
 		return True
@@ -85,7 +85,7 @@ class Httpy:
 		
 		try:
 			req = urllib2.Request(url, headers=headers)
-			handle = self.urlopen(req)
+			handle = self.urlopen(req, timeout=10)
 			
 		except Exception, e:
 			if self.debugging: stderr.write('Httpy: Exception while creating request: %s\n' % str(e))
@@ -192,7 +192,7 @@ class Httpy:
 			encoded_data = postdict
 		try:
 			req = self.Request(url, encoded_data, headers)
-			handle = self.urlopen(req)
+			handle = self.urlopen(req, timeout=10)
 			result = handle.read()
 		except Exception, e:
 			if self.debugging: stderr.write('Httpy.py: Exception: %s: %s\n' % (url, str(e)))
@@ -258,7 +258,7 @@ class Httpy:
 		
 		headers = {'User-agent' : self.user_agent}
 		req = urllib2.Request(url, headers=headers)
-		file_on_web = self.urlopen(req)
+		file_on_web = self.urlopen(req, timeout=10)
 		while True:
 			buf = file_on_web.read(65536)
 			if len(buf) == 0:
