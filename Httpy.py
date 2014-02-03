@@ -44,7 +44,7 @@ class Httpy:
 		try:
 			headers = {'User-agent' : self.user_agent}
 			req = urllib2.Request(url, headers=headers)
-			site = self.urlopen(req)
+			site = self.urlopen(req, timeout=10)
 			#site = self.urlopen(url)
 		except Exception:
 			return {'content-type': 'unknown', 'content-length': '0'}
